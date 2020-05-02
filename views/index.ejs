@@ -14,6 +14,14 @@
         <tr><td>Object:</td><td><%= context.environment.record.attributes.type %></td></tr>
         <tr><td>Id:</td><td><%= context.environment.record.Id %></td></tr>
     </table>
+    <br/>
+    client
+    <table>
+        <tr><td>oauthToken:</td><td><%= context.oauthToken%></td></tr>
+        <tr><td>refreshToken:</td><td><%= context.refreshToken%>></td></tr>
+        <tr><td>targetOrigin:</td><td><%= context.targetOrigin%></td></tr>
+    </table>
+
     <script>
     </script>
     <p>It can also access more data in Salesforce using the REST APIs. With context and APIs, Canvas makes it easy to integrate applications written in any language inside your Salesforce pages.</p>
