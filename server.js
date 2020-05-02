@@ -15,21 +15,21 @@ app.use(express.static(__dirname + '/public'));
 app.post('/signedrequest', function(req, res) {
 
     // You could save this information in the user session if needed
-    var signedRequest = decode(req.body.signed_request, consumerSecret),
-        context = signedRequest.context,
-        client = signedRequest.client,
-        oauthToken = signedRequest.client.oauthToken,
-        instanceUrl = signedRequest.client.instanceUrl,
+    var signedRequest = decode(req.body.signed_request, consumerSecret);
+    var context = signedRequest.context;
+    var client = signedRequest.client;
+    var oauthToken = signedRequest.client.oauthToken;
+    var instanceUrl = signedRequest.client.instanceUrl;
 
-        query = "SELECT Id, FirstName, LastName, Phone, Email FROM Contact WHERE Id = '" + context.environment.record.Id + "'",
+    var query = "SELECT Id, FirstName, LastName, Phone, Email FROM Contact WHERE Id = '" + context.environment.record.Id + "'";
         
-        contactRequest = {
+        var contactRequest = {
             url: instanceUrl + '/services/data/v29.0/query?q=' + query,
             headers: {
                 'Authorization': 'OAuth ' + oauthToken
             }
         };
-console.log('::LLLL::'+signedRequest);
+console.log('::LLLL::'+oauthToken);
     request(contactRequest, function(err, response, body) {
         var qr = qrcode.qrcode(4, 'L'),
             contact = JSON.parse(body).records[0],
