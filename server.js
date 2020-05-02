@@ -21,14 +21,14 @@ app.post('/signedrequest', function(req, res) {
         instanceUrl = signedRequest.client.instanceUrl,
 
         query = "SELECT Id, FirstName, LastName, Phone, Email FROM Contact WHERE Id = '" + context.environment.record.Id + "'",
-
+        
         contactRequest = {
             url: instanceUrl + '/services/data/v29.0/query?q=' + query,
             headers: {
                 'Authorization': 'OAuth ' + oauthToken
             }
         };
-
+console.log('::LLLL::'+oauthToken);
     request(contactRequest, function(err, response, body) {
         var qr = qrcode.qrcode(4, 'L'),
             contact = JSON.parse(body).records[0],
