@@ -17,6 +17,7 @@ app.post('/signedrequest', function(req, res) {
     // You could save this information in the user session if needed
     var signedRequest = decode(req.body.signed_request, consumerSecret);
     let context = signedRequest.context;
+    let client = signedRequest.client;
     let oauthToken = signedRequest.client.oauthToken;
     let instanceUrl = signedRequest.client.instanceUrl;
     let query = "SELECT Id, FirstName, LastName, Phone, Email FROM Contact WHERE Id = '" + context.environment.record.Id + "'";
@@ -37,7 +38,7 @@ app.post('/signedrequest', function(req, res) {
         var imgTag = qr.createImgTag(4);
         res.render('index', {context: context, imgTag: imgTag});
     });
-res.send('::LLLL:::'+oauthToken);
+//res.send('::LLLL:::'+oauthToken);
 });
 
 app.set('port', process.env.PORT || 5000);
