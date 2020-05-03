@@ -18,14 +18,10 @@
     <br/>
     client
 
-<button class="btn btn-success">Install</button>
+<button class="btn btn-success" onclick="callsalesforce();">Install</button>
 
     <script>
-    $('button').click(function () {
-        $.post('/page', {data: 'blah'}, function (data) {
-        console.log(data);
-      });
-    }, 'json');
+   
     </script>
     <p>It can also access more data in Salesforce using the REST APIs. With context and APIs, Canvas makes it easy to integrate applications written in any language inside your Salesforce pages.</p>
     <p>For example, the QR Code below is generated in Node.js. Scan it to create a contact on your mobile phone:</p>
