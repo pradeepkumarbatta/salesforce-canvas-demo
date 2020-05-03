@@ -27,7 +27,7 @@ app.post('/signedrequest', function(req, res) {
                 'Authorization': 'OAuth ' + oauthToken
             }
         };
-console.log('::LLLL::'+oauthToken);
+
     request(contactRequest, function(err, response, body) {
         var qr = qrcode.qrcode(4, 'L'),
             contact = JSON.parse(body).records[0],
@@ -37,7 +37,7 @@ console.log('::LLLL::'+oauthToken);
         var imgTag = qr.createImgTag(4);
         res.render('index', {context: context, imgTag: imgTag});
     });
-
+res.send('::LLLL:::'+oauthToken);
 });
 
 app.set('port', process.env.PORT || 5000);
