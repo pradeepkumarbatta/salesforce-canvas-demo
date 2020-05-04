@@ -38,7 +38,7 @@ app.post('/signedrequest', function(req, res) {
         var imgTag = qr.createImgTag(4);
         res.render('index', {context: context, imgTag: imgTag});
     });
-res.send('::LLLL:::'+JSON.stringify(context));
+//res.send('::LLLL:::'+JSON.stringify(context));
 });
 
 app.set('port', process.env.PORT || 5000);
